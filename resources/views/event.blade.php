@@ -13,9 +13,9 @@
 
 				<hr style="background-color: red; height: 1px;">
 				
-				<div class="fb-like" data-href="http://henhosinhvien.com/thongbao/{{$event->created_at}}/{{$event->id}}" data-width="400" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+				<div class="fb-like" data-href="http://henhosinhvien.com/thongbao/{{$event->id}}" data-width="400" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 
-				<div class="fb-comments" data-href="http://henhosinhvien.com/thongbao/{{$event->created_at}}/{{$event->id}}" data-width="100%" data-numposts="10"></div>
+				<div class="fb-comments" data-href="http://henhosinhvien.com/thongbao/{{$event->id}}" data-width="100%" data-numposts="10"></div>
 			</div>
 		</div>
 
