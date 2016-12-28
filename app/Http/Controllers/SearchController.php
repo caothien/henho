@@ -22,7 +22,7 @@ class SearchController extends Controller
         $profile_search = DB::table('thanhviens')
         	->join('truongs', 'thanhviens.id_truong', '=', 'truongs.id_truong')
         	->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
-        	->where('thanhviens.sdt', $sdt)->first();
+        	->where('thanhviens.sdt', $sdt)->where('thanhviens.duyet', 'yes')->first();
             
         if($profile_search == null){
         	return redirect('/')
@@ -38,11 +38,13 @@ class SearchController extends Controller
         $thanhvien_nam = DB::table('thanhviens')
         	->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
         	->where('thanhviens.gioitinh', 'Nam')
+            ->where('thanhviens.duyet', 'yes')
         	->paginate(16);
         
         $tong_nam = DB::table('thanhviens')
         	->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
         	->where('thanhviens.gioitinh', 'Nam')
+            ->where('thanhviens.duyet', 'yes')
         	->count();
 
         return view('searchresult', ['search_thanhvien' => $thanhvien_nam , 'tong' => $tong_nam]);
@@ -52,11 +54,13 @@ class SearchController extends Controller
         $thanhvien_nu = DB::table('thanhviens')
         	->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
         	->where('thanhviens.gioitinh', 'Nữ')
+            ->where('thanhviens.duyet', 'yes')
         	->paginate(16);
 
         $tong_nu = DB::table('thanhviens')
         	->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
         	->where('thanhviens.gioitinh', 'Nữ')
+            ->where('thanhviens.duyet', 'yes')
         	->count();
 
         return view('searchresult', ['search_thanhvien' => $thanhvien_nu , 'tong' => $tong_nu]);
@@ -86,11 +90,13 @@ class SearchController extends Controller
         $sinhvientruong = DB::table('thanhviens')
             ->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
             ->where('thanhviens.id_truong', $idtruong)
+            ->where('thanhviens.duyet', 'yes')
             ->paginate(16);
 
         $tongkq = DB::table('thanhviens')
             ->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
             ->where('thanhviens.id_truong', $idtruong)
+            ->where('thanhviens.duyet', 'yes')
             ->count();
 
         if($tongkq == 0){
@@ -120,11 +126,13 @@ class SearchController extends Controller
         $sinhvienquequan = DB::table('thanhviens')
             ->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
             ->where('thanhviens.id_quequan', $idquequan)
+            ->where('thanhviens.duyet', 'yes')
             ->paginate(16);
 
         $tongkq = DB::table('thanhviens')
             ->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
             ->where('thanhviens.id_quequan', $idquequan)
+            ->where('thanhviens.duyet', 'yes')
             ->count();
 
         if($tongkq == 0){
@@ -153,11 +161,13 @@ class SearchController extends Controller
         $sinhviennamsinh = DB::table('thanhviens')
             ->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
             ->where('thanhviens.namsinh', $namsinh)
+            ->where('thanhviens.duyet', 'yes')
             ->paginate(16);
 
         $tongkq = DB::table('thanhviens')
             ->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
             ->where('thanhviens.namsinh', $namsinh)
+            ->where('thanhviens.duyet', 'yes')
             ->count();
 
         if($tongkq == 0){
