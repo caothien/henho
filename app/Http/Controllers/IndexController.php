@@ -61,10 +61,10 @@ class IndexController extends Controller
         return redirect()->back()->with('sendsuccess','Confession của bạn đã được lưu lại. Chúng tôi sẽ đăng lên sớm nhất có thể. Cảm ơn bạn !');       
     }
 
-    public function getConfession($id=''){
+    public function getConfession($id='', $stt=''){
         $confession = DB::table('confessions')
             ->where('id', $id)->first();
-        return view('confession', ['confession' => $confession]);
+        return view('confession', ['confession' => $confession, 'stt' => $stt]);
     }
 
     public function getEvents(){

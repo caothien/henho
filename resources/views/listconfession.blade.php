@@ -65,14 +65,14 @@
 							<table class="table table-condensed table-hover ">
 								<div class="row">
 									<tr>
-										<th class="col-md-6">Confession</th>
-										<th class="col-md-6">Xem</th>
+										<th class="col-md-6">Confessions</th>
+										<th class="col-md-6">Thả thính</th>
 									</tr>
 								</div>
-								@foreach($cfs as $value)							
+								@foreach($cfs as $key => $value)							
 								<tr>
-									<td>Confession số {{$value->id}}</td>
-									<td><a href="{!! url('confession') !!}/{!! $value->id !!}"><button class="btn btn-primary">Click !</button></a></td>
+									<td>Confession số {{$key + 1}}</td>
+									<td><a href="{!! url('confession') !!}/{!! $value->id !!}/{!! $key + 1 !!}" class="btn btn-primary">Xem !</a></td>
 								</tr>
 								@endforeach
 							</table>

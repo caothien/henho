@@ -7,32 +7,34 @@
 			<h3 class="panel-title">Confessions</h3>
 		</div>
 		<div class="panel-body">
-			<table class="table table-hover">
-				<div class="table-responsive">
-					<table class="table table-hover ">
+			<div class="table-responsive">
+				<table class="table table-hover ">
+					<div class="row">
 						<tr>
-							<th>Id</th>
-							<th>Nội dung</th>
-							<th>Bình luận</th>
-							<th>Ngày đăng</th>
-							<th>Duyệt</th>
-							<th>Sửa</th>
-							<th>Xóa</th>							
+							<th class="col-md-1">Id</th>
+							<th class="col-md-6">Nội dung</th>
+							<th class="col-md-1">Bình luận</th>
+							<th class="col-md-1">Ngày đăng</th>
+							<th class="col-md-1">Duyệt</th>
+							<th class="col-md-1">Sửa</th>
+							<th class="col-md-1">Xóa</th>							
 						</tr>
-						@foreach($cfs as $value)							
-						<tr>
-							<td>{{$value->id}}</td>
-							<td>{{$value->content}}</td>
-							<td>{{$value->comment}}</td>
-							<td>{{$value->created_at}}</td>
-							<td>{{$value->duyet}}</td>
-							<td><a href="{{ url('edit-confession')}}/{{$value->id}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-							<td><a href="{{ url('delete-confession')}}/{{$value->id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
-						</tr>
-						@endforeach				
-					</table>
-				</div>
-			</table>
+					</div>
+					@foreach($cfs as $value)
+						<div class="row">							
+							<tr>
+								<td class="col-md-1">{{$value->id}}</td>
+								<td class="col-md-6">{{$value->content}}</td>
+								<td class="col-md-1">{{$value->comment}}</td>
+								<td class="col-md-1">{{$value->created_at}}</td>
+								<td class="col-md-1">{{$value->duyet}}</td>
+								<td class="col-md-1"><a href="{{ url('edit-confession')}}/{{$value->id}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
+								<td class="col-md-1"><a href="{{ url('delete-confession')}}/{{$value->id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+							</tr>
+						</div>
+					@endforeach				
+				</table>
+			</div>
 
 			<div style="text-align: center;">
 				{{ $cfs->links() }}

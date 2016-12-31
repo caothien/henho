@@ -34,7 +34,7 @@ Route::post('/search-namsinh', 'SearchController@searchNamsinh');
 
 Route::post('/send-confession', 'IndexController@postConfession');
 
-Route::get('/confession/{id}', 'IndexController@getConfession');
+Route::get('/confession/{id}/{stt}', 'IndexController@getConfession');
 
 Auth::routes();
 

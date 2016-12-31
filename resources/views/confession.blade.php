@@ -5,10 +5,10 @@
 	<div class="col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title" style = "text-align: center;"> Svdn Confession</h3>
+				<h3 class="panel-title" style = "text-align: center;"> Svdn Confessions</h3>
 			</div>
 			<div class="panel-body">
-				<p style="color: blue">-- <i>Confession số {{$confession->id}}</i> -- &nbsp;  &nbsp; {{ date('H:i:s d/m/Y', strtotime($confession->created_at)) }}</p>
+				<p style="color: blue">-- <i>Confession số {{$stt}}</i> -- &nbsp;  &nbsp; {{ date('H:i:s d/m/Y', strtotime($confession->created_at)) }}</p>
 				<p>{{$confession->content}}</p>
 				<p>## admin ##</p>
 				<p>{{$confession->comment}}</p>
