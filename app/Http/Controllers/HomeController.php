@@ -125,6 +125,7 @@ class HomeController extends Controller
         $thanhviens = DB::table('thanhviens')
         ->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
         ->where('thanhviens.duyet', '=', 'yes')
+        ->orderBy('id', 'asc')
         ->paginate(16);
         return view('admin.members', ['thanhviens' => $thanhviens]);
     }
