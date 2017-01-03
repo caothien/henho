@@ -75,7 +75,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label">Facebook</label>
 							<div class="col-sm-10">
-								<a href="{{ url('$profile->facebook') }}"><button type="button" class="btn btn-primary form-control">Xem ngay</button></a>
+								<a href="{{$profile->facebook}}"><button type="button" class="btn btn-primary form-control">Xem ngay</button></a>
 							</div>
 						</div>
 
