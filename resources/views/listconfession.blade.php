@@ -45,7 +45,7 @@
 
 						<hr>
 
-						<form role="form" action="{{ url('/send-confession') }}" method="post">
+						<form role="form" action="#" method="post">
 							{{ csrf_field() }}
 
 							<div class="form-group">
