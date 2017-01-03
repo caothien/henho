@@ -17,6 +17,7 @@ class IndexController extends Controller
         $members = DB::table('thanhviens')
         	->join('quequans', 'thanhviens.id_quequan', '=', 'quequans.id_quequan')
             ->where('thanhviens.duyet', '=', 'yes')
+            ->orderBy('id', 'asc')
         	->paginate(16);
         return view('index', ['thanhviens' => $members]);
     }
