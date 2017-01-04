@@ -26,6 +26,11 @@
 							{{ session('sendsuccess') }}
 						</div>
 						@endif
+						@if (session('tinh_sai'))
+						<div class="alert alert-success">
+							{{ session('tinh_sai') }}
+						</div>
+						@endif
 
 						<img class="img-responsive img-thumbnail" src="{{URL::asset('images/confessions.jpg')}}" alt="confession logo" >
 
@@ -45,13 +50,20 @@
 
 						<hr>
 
-						<form role="form" action="#" method="post">
+						<form role="form" action="{{ url('/send-confession') }}" method="post">
 							{{ csrf_field() }}
 
 							<div class="form-group">
 								<label>Confession</label>
 								<textarea name="confession" class="form-control" rows="15">{{ old('confession') }}</textarea>
 								<input type="hidden" name="comment" value="no">
+							</div>
+							<div class="form-group">
+								<label>Câu hỏi IQ</label>
+								<?php $a = rand(0, 30); $b = rand(0, 30); ?>
+								<input type="hidden" name="a" value="{{$a}}">
+								<input type="hidden" name="b" value="{{$b}}">
+								<input type="text" class="form-control" name="tong" placeholder="Tổng của {{$a}} và {{$b}}">
 							</div>
 
 							<button type="submit" class="btn btn-primary" style="width: 100%">Submit</button>

@@ -42,9 +42,11 @@ class IndexController extends Controller
         $validator = Validator::make($request->all(), 
             [
             'confession' => 'required | min: 50',
+            'tong' => 'required',
             ],[
             'confession.required' => 'Vui lòng điền nội dung Confession trước khi Submit !', 
             'confession.min' => 'Nội dung Confession tối thiểu 50 kí tự !', 
+            'tong.required' => 'Trả lời câu hỏi IQ bắt buộc !', 
             ]);
 
         if ($validator->fails()) {
@@ -53,13 +55,20 @@ class IndexController extends Controller
             ->withInput();
         }
 
-        $data_input = $request->all();       
-        $data_save = new ConfessionModel;
-        $data_save->content = $data_input["confession"];
-        $data_save->comment = $data_input["comment"];
-        $data_save->duyet = "no";       
-        $data_save->save();
-        return redirect()->back()->with('sendsuccess','Confession của bạn đã được lưu lại. Chúng tôi sẽ đăng lên sớm nhất có thể. Cảm ơn bạn !');       
+        $data_input = $request->all();
+        $a = $data_input["a"];
+        $b = $data_input["b"];
+        $tong = $data_input["tong"];
+        if($tong == ($a+$b)){
+            $data_save = new ConfessionModel;
+            $data_save->content = $data_input["confession"];
+            $data_save->comment = $data_input["comment"];
+            $data_save->duyet = "no";       
+            $data_save->save();
+            return redirect()->back()->with('sendsuccess','Confession của bạn đã được lưu lại. Chúng tôi sẽ đăng lên sớm nhất có thể. Cảm ơn bạn !'); 
+        }else{
+            return redirect()->back()->withInput()->with('tinh_sai','Tính sai rồi !'); 
+        }      
     }
 
     public function getConfession($id='', $stt=''){
@@ -89,11 +98,13 @@ class IndexController extends Controller
             [
             'ten' => 'max:20',  
             'email' => 'required',
-            'noidung' => 'required',      
+            'noidung' => 'required', 
+            'tong' => 'required',     
             ],[
             'ten.max' => 'Tên không quá 20 kí tự !',
             'email.required' => 'Vui lòng nhập email !',
-            'noidung.required' => 'Vui lòng nhập nội dung !',       
+            'noidung.required' => 'Vui lòng nhập nội dung !',  
+            'tong.required' => 'Trả lời câu hỏi IQ bắt buộc !',      
             ]);
 
         if ($validator->fails()) {
@@ -102,15 +113,22 @@ class IndexController extends Controller
             ->withInput();
         }
 
-        $data_input = $request->all();       
-        $data_save = new LienheModel;
-        $data_save->ten = $data_input["ten"];
-        $data_save->sdt = $data_input["sdt"];
-        $data_save->email = $data_input["email"];
-        $data_save->noidung = $data_input["noidung"];
-        $data_save->check = "no";       
-        $data_save->save();
-        
-        return redirect()->back()->with('sendsuccess','Tin nhắn của bạn đã gửi thành công. Xin cảm ơn !');       
+        $data_input = $request->all();  
+        $a = $data_input["a"];
+        $b = $data_input["b"];
+        $tong = $data_input["tong"];
+        if($tong == ($a+$b)){     
+            $data_save = new LienheModel;
+            $data_save->ten = $data_input["ten"];
+            $data_save->sdt = $data_input["sdt"];
+            $data_save->email = $data_input["email"];
+            $data_save->noidung = $data_input["noidung"];
+            $data_save->check = "no";       
+            $data_save->save();
+            
+            return redirect()->back()->with('sendsuccess','Tin nhắn của bạn đã gửi thành công. Xin cảm ơn !');   
+        }else{
+            return redirect()->back()->withInput()->with('tinh_sai','Tính sai rồi !'); 
+        }       
     }
 }

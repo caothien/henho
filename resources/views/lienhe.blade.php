@@ -23,7 +23,12 @@
 						<div class="alert alert-success">
 							{{ session('sendsuccess') }}
 						</div>
-						@endif
+					@endif
+					@if (session('tinh_sai'))
+						<div class="alert alert-success">
+							{{ session('tinh_sai') }}
+						</div>
+					@endif
 
 					<form role="form" action="{{ url('/lienhe') }}" method="post" enctype="multipart/form-data">
 						{{ csrf_field() }}
@@ -57,6 +62,14 @@
 						<div class="form-group">
 							<label>Nội dung</label>
 							<textarea name="noidung" class="form-control" rows="5">{{ old('noidung') }}</textarea>
+						</div>
+
+						<div class="form-group">
+							<label>Câu hỏi IQ</label>
+							<?php $a = rand(0, 30); $b = rand(0, 30); ?>
+							<input type="hidden" name="a" value="{{$a}}">
+							<input type="hidden" name="b" value="{{$b}}">
+							<input type="text" class="form-control" name="tong" placeholder="Tổng của {{$a}} và {{$b}}">
 						</div>
 
 						<button type="submit" class="btn btn-default">Submit</button>

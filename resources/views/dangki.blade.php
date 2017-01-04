@@ -28,6 +28,11 @@
 						</ul>
 					</div>
 					@endif
+					@if (session('tinh_sai'))
+						<div class="alert alert-success">
+							{{ session('tinh_sai') }}
+						</div>
+						@endif
 
 					<form role="form" action="{{ url('/dangki') }}" method="post" enctype="multipart/form-data">
 						{{ csrf_field() }}
@@ -146,6 +151,14 @@
 							<label>Avatar</label>
 							<input type="file" name="avatar">
 							<p class="help-block" style="color: red">Chú ý: Chọn ảnh có dung lượng dưới 1Mb</p>
+						</div>
+
+						<div class="form-group">
+							<label>Câu hỏi IQ</label>
+							<?php $a = rand(0, 30); $b = rand(0, 30); ?>
+							<input type="hidden" name="a" value="{{$a}}">
+							<input type="hidden" name="b" value="{{$b}}">
+							<input type="text" class="form-control" name="tong" placeholder="Tổng của {{$a}} và {{$b}}">
 						</div>
 
 						<button type="submit" class="btn btn-default">Submit</button>
